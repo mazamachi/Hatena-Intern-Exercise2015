@@ -1,6 +1,7 @@
 package Log;
 use strict;
 use warnings;
+use DateTime;
 sub new {
     my ($class, %args) = @_;
     ($args{method}, $args{path}, $args{protocol}) = split / /, $args{req};
@@ -29,7 +30,9 @@ sub uri {
 }
 
 sub time {
-
+	my ($self, %args) = @_;
+	my $dt = DateTime->from_epoch( epoch => $self->{epoch});
+	return $dt->strftime('%Y-%m-%dT%H:%M:%S');
 }
 
 1;

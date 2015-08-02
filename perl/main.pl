@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use lib './lib';
+
 use Log;
 
 my $log = Log->new(
