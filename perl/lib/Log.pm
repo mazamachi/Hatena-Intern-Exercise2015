@@ -4,23 +4,25 @@ use warnings;
 use DateTime;
 sub new {
     my ($class, %args) = @_;
-    ($args{method}, $args{path}, $args{protocol}) = split / /, $args{req};
     return bless \%args, $class;
 }
 
 sub protocol {
 	my ($self, %args) = @_;
-	return $self->{protocol};
+    my ($method, $path, $protocol) = split / /, $args{req};
+	return $protocol;
 }
 
 sub method {
 	my ($self, %args) = @_;
-	return $self->{method};
+	my ($method, $path, $protocol) = split / /, $args{req};
+	return $method;
 }
 
 sub path {
 	my ($self, %args) = @_;
-	return $self->{path};
+	my ($method, $path, $protocol) = split / /, $args{req};
+	return $path;
 }
 
 sub uri {
