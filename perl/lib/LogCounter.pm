@@ -22,6 +22,12 @@ sub group_by_user {
 }
 
 sub count_error {
+	my ($self, @args) = @_;
+	my $counter = 0;
+	foreach my $log (@{$self->{logs}}) {
+		$counter++ if ($log->{status} >= 500 && $log->{status} <= 599);
+	}
+	return $counter;
 }
 
 1;
