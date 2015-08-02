@@ -1,12 +1,12 @@
 // 課題 JS-1: 関数 `parseLTSVLog` を記述してください
 function parseLTSVLog(str) {
-  var reg = /([^:]+):(.+)\t([^:]+):(.+)\n/g
+  var reg = /path:(.+)\tepoch:(.+)\n/g
   var array=[];
   var ar;
   while(ar = reg.exec(str)){
     var hash = {};
-    hash[ar[1]]= ar[2];
-    hash[ar[3]]= ar[4];
+    hash["path"]= ar[1];
+    hash["epoch"]= Number(ar[2]);
     array.push(hash);
   }
   return array;
