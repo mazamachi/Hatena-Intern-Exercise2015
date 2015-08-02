@@ -18,3 +18,4 @@ print $log->path . "\n";
 print $log->protocol . "\n";
 print $log->uri . "\n";
 print $log->time . "\n";
+print $log->to_hash;

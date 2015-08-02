@@ -15,7 +15,9 @@ sub parse {
 		my @data = split /\t/, $line;
 		my %args_for_log = ();
 		foreach my $datum (@data) {
-			my($label, $value) = split /:/, $datum;
+			$datum =~ /([^:]+):(.+)/;
+			my($label, $value) = ($1, $2);
+			
 			chomp ($value);
 			$args_for_log{$label} = $value if $value ne '-';
 		}
