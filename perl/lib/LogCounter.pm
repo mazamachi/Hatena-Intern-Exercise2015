@@ -30,4 +30,18 @@ sub count_error {
 	return $counter;
 }
 
+# コードと出現回数のハッシュを返す
+sub count_code {
+	my ($self, @args) = @_;
+	my $counter;
+	%$counter = ();
+	foreach my $log (@{$self->{logs}}) {
+		unless (exists $counter->{$log->{path}}){
+			%$counter->{$log->{path}} = ();
+		}
+		$counter->{$log->{path}}->{$log->{status}} += 1;
+	}
+	return $counter;
+}
+
 1;

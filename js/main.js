@@ -1,6 +1,6 @@
 // 課題 JS-1: 関数 `parseLTSVLog` を記述してください
 function parseLTSVLog(str) {
-  var reg = /path:(.+)\tepoch:(.+)\n/g
+  var reg = /path:(.+)\t.*epoch:(\d+)\n/g
   var array=[];
   var ar;
   while(ar = reg.exec(str)){
