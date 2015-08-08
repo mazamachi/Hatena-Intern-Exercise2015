@@ -6,3 +6,4 @@ button.addEventListener( "click" , function() {
 	logOutput.innerHTML = "";
 	createLogTable(logOutput, parseLTSVLog(logInput.value));
 } , false );
+

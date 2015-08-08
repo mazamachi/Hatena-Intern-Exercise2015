@@ -11,6 +11,7 @@ my $parser = Parser->new( filename => '../sample_data/large_log.ltsv' );
 my $counter = LogCounter->new($parser->parse);
 my $data = $counter->count_code;
 # print Dumper $data;
+
 # 目盛り幅を決めるため、最大値を取得
 my $max=0;
 foreach my $path (keys(%$data)){
@@ -20,8 +21,8 @@ foreach my $path (keys(%$data)){
 		}	
 	}	
 }
-my $scale;
 
+my $scale;
 if($max<10){
 	$scale = 1;
 }else{
@@ -37,6 +38,6 @@ foreach my $path (sort keys(%$data)){
 	}
 	print "\n";
 	foreach my $code (sort keys(%{$data->{$path}})) {
-		print $code.":".("=" x ($data->{$path}{$code}/$scale-1))."*".$data->{$path}{$code}."\n";
+		print $code.":".("=" x ($data->{$path}{$code}/$scale - 1))."*".$data->{$path}{$code}."\n";
 	}
 }
