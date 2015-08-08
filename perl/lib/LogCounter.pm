@@ -34,12 +34,13 @@ sub count_error {
 sub count_code {
 	my ($self, @args) = @_;
 	my $counter;
-	%$counter = ();
+	$counter = {};
 	foreach my $log (@{$self->{logs}}) {
-		unless (exists $counter->{$log->{path}}){
-			%$counter->{$log->{path}} = ();
+		unless (exists $counter->{$log->path}){
+			$counter->{$log->path} = {};
 		}
-		$counter->{$log->{path}}->{$log->{status}} += 1;
+		$counter->{$log->path}->{$log->{status}} += 1;
+		# print $log->path." ".$log->{status}." ".$counter->{$log->path}->{$log->{status}}."\n";
 	}
 	return $counter;
 }
